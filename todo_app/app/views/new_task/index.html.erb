@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Task - PLAN CRAFT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #dbe6f6, #c5796d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>📝 Create a New Task</h1>
+
+    <form action="/tasks/create" method="post">
+      <%= csrf_meta_tags %>
+
+      <label for="title">Task Title</label>
+      <input type="text" name="title" id="title" required>
+
+      <div class="checkbox-group">
+        <input type="checkbox" name="completed" id="completed">
+        <label for="completed">Mark as Completed</label>
+      </div>
+
+      <input type="submit" value="Create Task">
+    </form>
+
+    <div class="footer-note">Start strong — one task at a time! 💼</div>
+  </div>
+</body>
+</html>

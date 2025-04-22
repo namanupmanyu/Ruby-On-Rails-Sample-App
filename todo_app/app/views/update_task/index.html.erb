@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Tasks - PLAN CRAFT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #dbe6f6, #c5796d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .task-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background-color: #f7f9fc;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .task-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 5px;
+    }
+
+    .task-status {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="task-container">
+    <h1>🛠️ Manage Your Tasks</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <div class="task-title"><%= task.title %></div>
+          <div class="task-status">
+            Status: <%= task.completed ? "✅ Completed" : "⏳ Not Completed" %>
+          </div>
+          <%= form_with(model: task, url: task_path(task), method: :patch, local: true) do |f| %>
+            <label for="title_<%= task.id %>">Update Title:</label>
+            <%= f.text_field :title, id: "title_#{task.id}", value: task.title %>
+            <%= f.submit "Update Task" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="footer-note">Keep improving — one task at a time 💪</div>
+  </div>
+</body>
+</html>

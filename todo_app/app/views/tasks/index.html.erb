@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Tasks - PLAN CRAFT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #dbe6f6, #F08080);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .task-wrapper {
+      background-color:orange;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 700px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #2c3e50;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      margin-bottom: 15px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: #34495e;
+    }
+
+    .status {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .completed {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .incomplete {
+      background-color: #fff3f3;
+      color: #c62828;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="task-wrapper">
+    <h1>📋 Your Task Board</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <span class="task-title"><%= task.title %></span>
+          <% if task.completed %>
+            <span class="status completed">✅ Completed</span>
+          <% else %>
+            <span class="status incomplete">⏳ Incomplete</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="footer-note" style="color: black;">Stay consistent and manage your day with PLAN CRAFT!</div>
+  </div>
+</body>
+</html>
+

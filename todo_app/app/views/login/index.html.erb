@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - PLAN CRAFT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ff914d; /* Orange color */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://your-image-link.com'); /* Add your background image link here */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      display: flex;
+      width: 900px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .login-left {
+      flex: 1;
+      padding: 60px 50px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .login-right {
+      flex: 1;
+      background: url('/assets/illustration.png') no-repeat center;
+      background-size: contain;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #dd4b39;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      cursor: pointer;
+      background-color: #fff;
+      transition: background-color 0.2s;
+    }
+
+    .social-btn:hover {
+      background-color: #f7f7f7;
+    }
+
+    .social-btn img {
+      height: 20px;
+      width: 20px;
+    }
+
+    .input-group {
+      margin-top: 25px;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      color: #555;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .login-btn {
+      background-color: #db4c3f;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-btn:hover {
+      background-color: #c74436;
+    }
+
+    .footer {
+      font-size: 13px;
+      color: #888;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #db4c3f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-left">
+      <div class="logo">📝 PlanCraft</div>
+      <h2>Log in</h2>
+
+      <div class="social-btn">
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" />
+        Continue with Google
+      </div>
+      <div class="social-btn">
+        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
+        Continue with Facebook
+      </div>
+      <div class="social-btn">
+        <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple" />
+        Continue with Apple
+      </div>
+
+      <%= form_with url: login_path, method: :post, local: true do |form| %>
+  <div class="input-group">
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email, placeholder: "Enter your email...", required: true %>
+  </div>
+
+  <div class="input-group">
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password, placeholder: "Enter your password...", required: true %>
+  </div>
+
+  <%= form.submit "Log in", class: "login-btn" %>
+<% end %>
+
+
+      <div class="footer">
+        Don’t have an account? <%= link_to 'Sign up', signup_path %>
+      </div>
+    </div>
+    <div class="login-right"></div>
+  </div>
+</body>
+</html>
+
+

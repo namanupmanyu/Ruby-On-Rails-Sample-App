@@ -1,0 +1,11 @@
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <strong><%= task.title %></strong> -
+      <%= task.completed ? "✅ Completed" : "❌ Not Completed" %>
+      |
+      <%= button_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>

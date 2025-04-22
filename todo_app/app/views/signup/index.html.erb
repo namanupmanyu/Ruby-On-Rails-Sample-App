@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup - PlanCraft</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ff914d; /* orange */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 800px;
+      max-width: 95%;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .left {
+      background: linear-gradient(to bottom right, #ff6f00, #ff914d);
+      color: white;
+      padding: 40px;
+      width: 50%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .left p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .left a {
+      margin-top: 20px;
+      display: inline-block;
+      color: white;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .right {
+      padding: 40px;
+      width: 50%;
+    }
+
+    .right h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .right input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .right .signup-btn {
+      background-color: #ff6f00;
+      border: none;
+      padding: 12px;
+      color: white;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 111, 0, 0.4);
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-icons i {
+      font-size: 22px;
+      margin: 0 10px;
+      color: #ff6f00;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h2>Come join us!</h2>
+      <p>
+        Start managing your tasks with ease.<br>
+        Get access to powerful features and seamless productivity.
+      </p>
+      <a href="/login/index">Already have an account? Sign in</a>
+    </div>
+    <div class="right">
+      <h2>Signup</h2>
+      <%= form_with model: @user, url: signup_path, method: :post do |f| %>
+        <%= f.text_field :username, placeholder: "Your name", required: true %>
+        <%= f.email_field :email, placeholder: "Your email", required: true %>
+        <%= f.password_field :password, placeholder: "Password", required: true %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm password", required: true %>
+        <%= f.submit "Signup", class: "signup-btn" %>
+      <% end %>
+      <div class="social-icons">
+        <p>or signup with</p>
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-google"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
